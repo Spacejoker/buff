@@ -2,14 +2,17 @@
   "manifest_version": 2,
 
   "name": "Happy Face",
-  "description": "Get a boost everytime you need one.",
-  "version": "1.0",
+  "description": "Brighten up your day with quotes from the Happy Face! :)",
+  "version": "1.1",
 
   "permissions": [
-    "https://secure.flickr.com/"
+    "http://buff-chrome-extension.herokuapp.com/"
   ],
   "browser_action": {
-    "default_icon": "smiley.png",
+    "default_icon": "icon19.gif",
     "default_popup": "popup.html"
-  }
+  },
+  "icons": { "16": "icon16.gif",
+           "48": "icon48.gif",
+          "128": "icon128.gif" }
 }
