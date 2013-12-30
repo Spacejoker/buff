@@ -1,73 +1,36 @@
-var timeline;
-var author;
+var quote;
+var person;
 var image;
- 
-var template;
-var content;
-var link;
- 
+
+var response;
 var req;
-var tweets;
  
 onload = setTimeout(init, 0);
  
 function init() {
-  displayLoader(true);
+  quote = document.getElementById('quote');
+  person = document.getElementById('person');
+  image = document.getElementById('image');
  
-  /* Retrieve various part of the page */
-  timeline = document.getElementById('quote');
-  author   = xpath('//div[@id="text"]/p', document);
-  author   = xpath('//div[@id="author"]/p', document);
-  image    = xpath('//div[@id="image"]/img', document);
- 
-  /* Send the request */
   req = new XMLHttpRequest();
-  req.open('GET', 'http://twitter.com/statuses/user_timeline/flhacqueba.json');
+  req.open('GET', 'http://buff-chrome-extension.herokuapp.com/quote');
   req.onload = process;
   req.send();
+  quote.innerHTML = "hej";
 }
- 
+
 function process() {
-  var res = JSON.parse(req.responseText);
-  tweets = res.concat(tweets);
+  response = JSON.parse(req.responseText);
+  quote.innerHTML = "Cool";
   update();
 }
  
 function update() {
-  displayLoader(false);
- 
-  var user;
-  var item;
- 
-  for(var i in tweets) {
-    user = tweets[i].user;
- 
-    /* Profile : only on the first tweet to fill the profile div */
-    if (i == 0) {
-      author.innerHTML = user.screen_name;
-      image.src = user.profile_image_url;
-      image.alt = user.name;
-    }
- 
-    /* Add a tweet */
-    content.innerHTML = tweets[i].text;
-    item = template.cloneNode(true);
-    timeline.appendChild(item);
-  }
+  quote.innerHTML = response.ret.quote;
+  person.innerHTML = response.ret.person;
+  image.src = response.image;
 }
  
 function xpath(expression, node) {
   return document.evaluate(expression, node).iterateNext();
-}
- 
-function displayLoader(bool) {
-  var loader = document.getElementById('loader');
-  if (bool) {
-    document.getElementById('tweets').style.display = 'none';
-    loader.innerHTML = '<img src="ajax-loader.gif" alt="loading..." />';
-  }
-  else {
-    document.getElementById('tweets').style.display = 'block';
-    loader.innerHTML = '';
-  }
 }
