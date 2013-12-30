@@ -15,12 +15,10 @@ function init() {
   displayLoader(true);
  
   /* Retrieve various part of the page */
-  timeline = document.getElementById('timeline');
-  template = xpath('//ul[@id="template"]/li', document);
-  author   = xpath('//div[@id="profile"]/p', document);
-  image    = xpath('//div[@id="profile"]/img', document);
-  content  = xpath('//div[@class="text"]/span', template);
-  link     = xpath('//div[@class="text"]/a', template);
+  timeline = document.getElementById('quote');
+  author   = xpath('//div[@id="text"]/p', document);
+  author   = xpath('//div[@id="author"]/p', document);
+  image    = xpath('//div[@id="image"]/img', document);
  
   /* Send the request */
   req = new XMLHttpRequest();
