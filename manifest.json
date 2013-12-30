@@ -2,14 +2,14 @@
   "manifest_version": 2,
 
   "name": "Happy Face",
-  "description": "This extension demonstrates a browser action with kittens.",
+  "description": "Get a boost everytime you need one.",
   "version": "1.0",
 
   "permissions": [
     "https://secure.flickr.com/"
   ],
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "smiley.png",
     "default_popup": "popup.html"
   }
 }
