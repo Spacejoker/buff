@@ -28,7 +28,3 @@ function update() {
   person.innerHTML = response.ret.person;
   image.src = response.ret.image;
 }
- 
-function xpath(expression, node) {
-  return document.evaluate(expression, node).iterateNext();
-}
